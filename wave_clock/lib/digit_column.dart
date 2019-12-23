@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// [DigitColumn] to represent a single digit integer.
+/// [DigitColumn] is to represent a single digit integer.
 class DigitColumn extends StatelessWidget {
   const DigitColumn({
     Key key,

@@ -39,7 +39,7 @@ void main() {
   runApp(ClockCustomizer((ClockModel model) => WaveClockApp(model)));
 }
 
-// [WaveClockApp] widget with [ClockModel] is the root of your application.
+// [WaveClockApp] widget with [ClockModel] is the root of the application.
 class WaveClockApp extends StatefulWidget {
   const WaveClockApp(this.model);
 
