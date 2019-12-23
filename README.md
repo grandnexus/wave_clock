@@ -15,8 +15,8 @@
 <br/>
 <img src='screenshots/light_waveclock_web.png' width='700'/>
 
-Wave Clock is a [Flutter](https://flutter.dev) clock for [Lenovo Smart Display](https://www.lenovo.com/us/en/smart-display)
-device built-in with [Google Assistant](https://assistant.google.com/) for the [Flutter Clock Challenge](https://flutter.dev/clock).
+Wave Clock is a [Flutter](https://flutter.dev) clock designed for [Lenovo Smart Display](https://www.lenovo.com/us/en/smart-display)
+device built-in with [Google Assistant](https://assistant.google.com/). It is created for the [Flutter Clock Challenge](https://flutter.dev/clock).
 
 The clock uses [ClockCustomizer] and [ClockModel] which are provided by [Flutter](https://flutter.dev) team to get the following simulated data:
 - Current Location
