@@ -14,8 +14,8 @@ import 'package:weather_icons/weather_icons.dart';
 class Clock extends StatefulWidget {
   const Clock({
     Key key,
-    this.width,
-    this.height,
+    @required this.width,
+    @required this.height,
     this.color = Colors.white70,
     this.location = "",
     this.lowTemperature = "",
@@ -23,7 +23,9 @@ class Clock extends StatefulWidget {
     this.weatherCondition = "",
     this.is24HourFormat = false,
     this.isDarkMode = false,
-  }) : super(key: key);
+  })  : assert(width != null),
+        assert(height != null),
+        super(key: key);
 
   final double width;
   final double height;

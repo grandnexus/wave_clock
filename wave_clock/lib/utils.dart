@@ -137,7 +137,7 @@ String getTimeType(int currentHour) =>
 // Get the [DigitColumn] color.
 Color getDigitColumnColor(int currentHour, bool isDarkMode, Color color) =>
     isDarkMode
-        ? Colors.white.withOpacity(0.8)
+        ? color.withOpacity(0.8)
         : currentHour <= 17
             ? Colors.blue[400].withOpacity(0.95)
             : Colors.white.withOpacity(0.8);
