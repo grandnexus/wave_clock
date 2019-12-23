@@ -8,9 +8,11 @@ class WaveTime {
   // Get the current time.
   final DateTime now = DateTime.now();
 
+  // Get formatted time without ':'.
   String getFormattedTime(String dateFormat) =>
       DateFormat(dateFormat).format(now).replaceAll(':', '');
 
+  // Split formatted time into individual digits.
   List<int> splitDigits(String timeString) =>
       timeString.split('').map((digit) => int.parse(digit)).toList();
 
