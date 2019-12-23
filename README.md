@@ -1,16 +1,19 @@
 ## Wave Clock
 
-Flutter iOS
-<img src='screenshots/dark_waveclock_ios.png' width='700'>
-<img src='screenshots/light_waveclock_ios.png' width='700'>
+###### Flutter iOS
+<img src='screenshots/dark_waveclock_ios.png' width='700'/>
+<br/>
+<img src='screenshots/light_waveclock_ios.png' width='700'/>
 
-Flutter Android
-<img src='screenshots/dark_waveclock_android.png' width='700'>
-<img src='screenshots/light_waveclock_android.png' width='700'>
+###### Flutter Android
+<img src='screenshots/dark_waveclock_android.png' width='700'/>
+<br/>
+<img src='screenshots/light_waveclock_android.png' width='700'/>
 
-Flutter Web
-<img src='screenshots/dark_waveclock_web.png' width='700'>
-<img src='screenshots/light_waveclock_web.png' width='700'>
+###### Flutter Web
+<img src='screenshots/dark_waveclock_web.png' width='700'/>
+<br/>
+<img src='screenshots/light_waveclock_web.png' width='700'/>
 
 Wave Clock is a [Flutter](https://flutter.dev) clock for [Lenovo Smart Display](https://www.lenovo.com/us/en/smart-display)
 device built-in with [Google Assistant](https://assistant.google.com/) for the [Flutter Clock Challenge](https://flutter.dev/clock).
