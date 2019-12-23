@@ -44,7 +44,7 @@ void main() {
       expect(color.runtimeType, equals(Color));
     });
     test('[Function] calculateWaveHeight', () {
-      final Size size = Size(100, 200);
+      const Size size = Size(100, 200);
       final double waveHeight = calculateWaveHeight(10, size);
       expect(waveHeight, 81.66666666666667);
       expect(waveHeight.runtimeType, equals(double));

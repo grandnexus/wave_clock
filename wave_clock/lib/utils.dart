@@ -15,10 +15,10 @@ class Weather {
 
 // Get the weather icon and color based on current hour and weather condition.
 Weather getWeather(int currentHour, String weatherCondition,
-    {isDarkMode = false}) {
-  final timeType = getTimeType(currentHour);
-  final weatherWithTimeType = '$timeType-$weatherCondition';
-  final textColor = getTextColor(isDarkMode);
+    {bool isDarkMode = false}) {
+  final String timeType = getTimeType(currentHour);
+  final String weatherWithTimeType = '$timeType-$weatherCondition';
+  final Color textColor = getTextColor(isDarkMode);
 
   switch (weatherWithTimeType) {
     case 'day-cloudy':
@@ -68,14 +68,14 @@ Weather getWeather(int currentHour, String weatherCondition,
       return Weather(
         icon: WeatherIcons.day_snow,
         textColor: textColor,
-        waveColor: Color.fromRGBO(232, 236, 242, 1.0),
+        waveColor: const Color.fromRGBO(232, 236, 242, 1.0),
       );
       break;
     case 'night-snowy':
       return Weather(
         icon: WeatherIcons.night_snow,
         textColor: textColor,
-        waveColor: Color.fromRGBO(78, 95, 110, 1.0),
+        waveColor: const Color.fromRGBO(78, 95, 110, 1.0),
       );
       break;
     case 'day-sunny':
@@ -96,14 +96,14 @@ Weather getWeather(int currentHour, String weatherCondition,
       return Weather(
         icon: WeatherIcons.day_thunderstorm,
         textColor: textColor,
-        waveColor: Color.fromRGBO(94, 92, 132, 0.9),
+        waveColor: const Color.fromRGBO(94, 92, 132, 0.9),
       );
       break;
     case 'night-thunderstorm':
       return Weather(
         icon: WeatherIcons.night_thunderstorm,
         textColor: textColor,
-        waveColor: Color.fromRGBO(94, 92, 132, 0.9),
+        waveColor: const Color.fromRGBO(94, 92, 132, 0.9),
       );
       break;
     case 'day-windy':

@@ -6,8 +6,8 @@ import 'package:wave_clock/digit_column.dart';
 void main() {
   testWidgets('[Widget] DigitColumn', (WidgetTester tester) async {
     // Create key.
-    final Key key1 = Key('digit_column1');
-    final Key key2 = Key('digit_column2');
+    const Key key1 = Key('digit_column1');
+    const Key key2 = Key('digit_column2');
 
     // Build our app and trigger a frame.
     await tester.pumpWidget(
@@ -33,9 +33,9 @@ void main() {
     await tester.pump();
 
     // Create the finders.
-    final finderByType = find.byType(DigitColumn);
-    final finderByKey1 = find.byKey(key1);
-    final finderByKey2 = find.byKey(key2);
+    final Finder finderByType = find.byType(DigitColumn);
+    final Finder finderByKey1 = find.byKey(key1);
+    final Finder finderByKey2 = find.byKey(key2);
 
     // Use the `findsOneWidget` matcher provided by flutter_test
     expect(finderByType, findsNWidgets(2));

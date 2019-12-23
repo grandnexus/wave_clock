@@ -17,10 +17,10 @@ class Clock extends StatefulWidget {
     @required this.width,
     @required this.height,
     this.color = Colors.white70,
-    this.location = "",
-    this.lowTemperature = "",
-    this.highTemperature = "",
-    this.weatherCondition = "",
+    this.location = '',
+    this.lowTemperature = '',
+    this.highTemperature = '',
+    this.weatherCondition = '',
     this.is24HourFormat = false,
     this.isDarkMode = false,
   })  : assert(width != null),
@@ -48,7 +48,7 @@ class _ClockState extends State<Clock> {
   // Update the clock.
   @override
   void initState() {
-    _timer = Timer.periodic(Duration(seconds: 1), (v) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (Timer v) {
       setState(() {
         _now = WaveTime();
       });
@@ -152,10 +152,10 @@ class _ClockState extends State<Clock> {
                       ).textColor,
                     ),
               ),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: <Widget>[
                   // Columns for the clock
                   DigitColumn(
                     digit: widget.is24HourFormat

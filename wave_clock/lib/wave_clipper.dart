@@ -9,7 +9,7 @@ class WaveClipper extends CustomClipper<Path> {
         assert(waveOffsets != null);
 
   final double animation;
-  List<Offset> waveOffsets = [];
+  List<Offset> waveOffsets = <Offset>[];
 
   @override
   Path getClip(Size size) {

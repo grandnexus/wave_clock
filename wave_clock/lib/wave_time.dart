@@ -2,6 +2,18 @@ import 'package:intl/intl.dart' show DateFormat;
 
 /// [WaveTime] utility class to access values as time digits.
 class WaveTime {
+  WaveTime() {
+    // Get the current time in String without ':' in 12-hour format.
+    final String currentTimeIn12Hour = getFormattedTime('hhmmss');
+
+    // Get the current time in String without ':' in 24-hour format.
+    final String currentTimeIn24Hour = getFormattedTime('HHmmss');
+
+    // Split the String current time into parts.
+    timeDigitsIn12Hour = splitDigits(currentTimeIn12Hour);
+    timeDigitsIn24Hour = splitDigits(currentTimeIn24Hour);
+  }
+
   List<int> timeDigitsIn12Hour;
   List<int> timeDigitsIn24Hour;
 
@@ -14,19 +26,7 @@ class WaveTime {
 
   // Split formatted time into individual digits.
   List<int> splitDigits(String timeString) =>
-      timeString.split('').map((digit) => int.parse(digit)).toList();
-
-  WaveTime() {
-    // Get the current time in String without ':' in 12-hour format.
-    final String currentTimeIn12Hour = getFormattedTime('hhmmss');
-
-    // Get the current time in String without ':' in 24-hour format.
-    final String currentTimeIn24Hour = getFormattedTime('HHmmss');
-
-    // Split the String current time into parts.
-    timeDigitsIn12Hour = splitDigits(currentTimeIn12Hour);
-    timeDigitsIn24Hour = splitDigits(currentTimeIn24Hour);
-  }
+      timeString.split('').map((String digit) => int.parse(digit)).toList();
 
   int get year => now.year; // Get year in YYYY.
   int get month => now.month; // Get year in MM.

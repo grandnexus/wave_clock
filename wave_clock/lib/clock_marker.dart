@@ -17,12 +17,12 @@ class ClockMarker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final int numberOfMarkers = 25;
+    const int numberOfMarkers = 25;
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          ...List.generate(numberOfMarkers, (int index) {
+        children: <Widget>[
+          ...List<Row>.generate(numberOfMarkers, (int index) {
             final int marker = numberOfMarkers - index - 1;
             return Row(
               children: <Widget>[
@@ -33,7 +33,7 @@ class ClockMarker extends StatelessWidget {
                       ? Theme.of(context).primaryColorDark.withOpacity(0.3)
                       : Theme.of(context).primaryColorLight.withOpacity(0.9),
                 ),
-                SizedBox(width: 5.0),
+                const SizedBox(width: 5.0),
                 Opacity(
                   opacity: index.isOdd ? 1 : 0,
                   child: SizedBox(

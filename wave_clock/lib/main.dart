@@ -20,10 +20,12 @@ void main() {
   }
 
   // Set the device orientation to landscape only.
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.landscapeRight,
-    DeviceOrientation.landscapeLeft,
-  ]);
+  SystemChrome.setPreferredOrientations(
+    <DeviceOrientation>[
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+    ],
+  );
 
   // This creates a clock that enables you to customize it.
   //
@@ -73,8 +75,8 @@ class _WaveClockAppState extends State<WaveClockApp> {
   void _updateModel() {
     setState(() {
       // Cause the clock to rebuild when the model changes.
-      is24HourFormat = widget.model.is24HourFormat;
-      location = widget.model.location;
+      is24HourFormat = widget.model.is24HourFormat as bool;
+      location = widget.model.location as String;
       lowTemperature = widget.model.lowString;
       highTemperature = widget.model.highString;
       weatherCondition = widget.model.weatherString;
@@ -94,7 +96,8 @@ class _WaveClockAppState extends State<WaveClockApp> {
       ),
       home: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: LayoutBuilder(builder: (context, constraints) {
+        body: LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
           return Clock(
             width: constraints.maxWidth,
             height: constraints.maxHeight,

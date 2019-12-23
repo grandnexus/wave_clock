@@ -9,17 +9,18 @@ void main() {
   group('[Widget] WaveClipper', () {
     // Initialize Flutter binding.
     final TestWidgetsFlutterBinding binding =
-        TestWidgetsFlutterBinding.ensureInitialized();
+        TestWidgetsFlutterBinding.ensureInitialized()
+            as TestWidgetsFlutterBinding;
     if (binding is LiveTestWidgetsFlutterBinding)
       binding.framePolicy = LiveTestWidgetsFlutterBindingFramePolicy.fullyLive;
 
     test('Creates wave list with offset coordinates on clip path', () {
-      final Size size = Size(300, 600);
+      const Size size = Size(300, 600);
       final AnimationController animationController = AnimationController(
         vsync: const TestVSync(),
-        duration: Duration(seconds: 3),
+        duration: const Duration(seconds: 3),
       );
-      final List<Offset> waveList = [];
+      final List<Offset> waveList = <Offset>[];
       animationController.addListener(() {
         waveList.clear();
         for (int i = -2 - 90; i <= size.width.toInt() + 2; i++) {

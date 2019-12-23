@@ -35,7 +35,7 @@ class Wave extends StatefulWidget {
 
 class _WaveState extends State<Wave> with TickerProviderStateMixin {
   AnimationController animation;
-  List<Offset> waveOffsets = [];
+  List<Offset> waveOffsets = <Offset>[];
 
   @override
   void initState() {
@@ -76,9 +76,9 @@ class _WaveState extends State<Wave> with TickerProviderStateMixin {
           parent: animation,
           curve: Curves.easeInOut,
         ),
-        builder: (context, child) => ClipPath(
+        builder: (BuildContext context, Widget child) => ClipPath(
           child: AnimatedContainer(
-            duration: Duration(milliseconds: 2),
+            duration: const Duration(milliseconds: 2),
             curve: Curves.fastOutSlowIn,
             width: widget.size.width,
             height: widget.size.height,

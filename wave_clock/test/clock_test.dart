@@ -7,7 +7,7 @@ import 'package:wave_clock/clock.dart';
 void main() {
   testWidgets('[Widget] Clock', (WidgetTester tester) async {
     // Create key.
-    final Key key = Key('clock');
+    const Key key = Key('clock');
 
     // Get current time.
     final WaveTime now = WaveTime();
@@ -36,8 +36,8 @@ void main() {
     await tester.pump();
 
     // Create the finders.
-    final finderByType = find.byType(Clock);
-    final finderByKey = find.byKey(key);
+    final Finder finderByType = find.byType(Clock);
+    final Finder finderByKey = find.byKey(key);
 
     // Use the `findsOneWidget` matcher provided by flutter_test
     expect(finderByType, findsOneWidget);

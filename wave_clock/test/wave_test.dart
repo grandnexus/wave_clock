@@ -6,14 +6,14 @@ import 'package:wave_clock/wave.dart';
 void main() {
   testWidgets('[Widget] Wave', (WidgetTester tester) async {
     // Create key.
-    final Key key = Key('wave');
+    const Key key = Key('wave');
 
     // Initialize [Size].
-    final Size size = Size(300, 600);
+    const Size size = Size(300, 600);
 
     // Build our app and trigger a frame.
     await tester.pumpWidget(
-      Wave(
+      const Wave(
         key: key,
         size: size,
         xOffset: 120,
@@ -28,8 +28,8 @@ void main() {
     await tester.pump();
 
     // Create the Finders.
-    final waveFinderByKey = find.byKey(key);
-    final waveFinderByType = find.byType(Wave);
+    final Finder waveFinderByKey = find.byKey(key);
+    final Finder waveFinderByType = find.byType(Wave);
 
     // Use the `findsOneWidget` matcher provided by flutter_test to
     // verify that the Text widgets appear exactly once in the widget tree.
