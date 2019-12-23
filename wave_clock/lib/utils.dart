@@ -1,17 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_icons/weather_icons.dart';
 
-// Weather model for holding icon, text and wave colors based on weather condition.
-class Weather {
-  Weather({
-    this.icon,
-    this.textColor = Colors.black,
-    this.waveColor = Colors.blue,
-  });
-  IconData icon;
-  Color textColor;
-  Color waveColor;
-}
+import 'package:wave_clock/weather.dart';
 
 // Get the weather icon and color based on current hour and weather condition.
 Weather getWeather(int currentHour, String weatherCondition,
