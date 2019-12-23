@@ -87,6 +87,7 @@ class _WaveClockAppState extends State<WaveClockApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'Bungee',
         brightness: Theme.of(context).brightness,
         primaryColorLight: Colors.grey,
         primaryColorDark: Colors.white,
