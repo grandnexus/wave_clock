@@ -2,25 +2,28 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter/services.dart' show DeviceOrientation, SystemChrome;
-import 'package:flutter_clock_helper/customizer.dart';
-import 'package:flutter_clock_helper/model.dart';
+import 'package:flutter_clock_helper/customizer.dart' show ClockCustomizer;
+import 'package:flutter_clock_helper/model.dart' show ClockModel;
 
 import 'package:wave_clock/clock.dart';
 
+/// [main] to initialize and run the [WaveClockApp].
 void main() {
-  // A temporary measure until Platform supports web and TargetPlatform supports
-  // macOS.
+  // This ensures binding to be initialized before calling [runApp].
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // A temporary measure until [Platform] supports web and [TargetPlatform] supports macOS.
   if (!kIsWeb && Platform.isMacOS) {
     debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
   }
 
+  // Set the device orientation to landscape only.
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeRight,
     DeviceOrientation.landscapeLeft,
   ]);
-
-  SystemChrome.setEnabledSystemUIOverlays([]);
 
   // This creates a clock that enables you to customize it.
   //
@@ -34,7 +37,7 @@ void main() {
   runApp(ClockCustomizer((ClockModel model) => WaveClockApp(model)));
 }
 
-// This widget is the root of your application.
+// [WaveClockApp] widget with [ClockModel] is the root of your application.
 class WaveClockApp extends StatefulWidget {
   const WaveClockApp(this.model);
 
@@ -47,6 +50,11 @@ class WaveClockApp extends StatefulWidget {
 class _WaveClockAppState extends State<WaveClockApp> {
   bool is24HourFormat = false;
   bool isDarkMode = false;
+
+  String location;
+  String lowTemperature;
+  String highTemperature;
+  String weatherCondition;
 
   @override
   void initState() {
@@ -66,6 +74,10 @@ class _WaveClockAppState extends State<WaveClockApp> {
     setState(() {
       // Cause the clock to rebuild when the model changes.
       is24HourFormat = widget.model.is24HourFormat;
+      location = widget.model.location;
+      lowTemperature = widget.model.lowString;
+      highTemperature = widget.model.highString;
+      weatherCondition = widget.model.weatherString;
     });
   }
 
@@ -76,7 +88,7 @@ class _WaveClockAppState extends State<WaveClockApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Theme.of(context).brightness,
-        primarySwatch: Colors.brown,
+        primaryColorLight: Colors.grey,
         primaryColorDark: Colors.white,
       ),
       home: Scaffold(
@@ -85,6 +97,13 @@ class _WaveClockAppState extends State<WaveClockApp> {
           return Clock(
             width: constraints.maxWidth,
             height: constraints.maxHeight,
+            color: isDarkMode
+                ? Theme.of(context).primaryColorDark
+                : Theme.of(context).primaryColorLight,
+            location: location,
+            lowTemperature: lowTemperature,
+            highTemperature: highTemperature,
+            weatherCondition: weatherCondition,
             is24HourFormat: is24HourFormat,
             isDarkMode: isDarkMode,
           );

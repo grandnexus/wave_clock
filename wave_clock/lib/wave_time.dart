@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart' show DateFormat;
 
-/// Utility class to access values as time digits.
+/// [WaveTime] utility class to access values as time digits.
 class WaveTime {
   List<int> timeDigitsIn12Hour;
   List<int> timeDigitsIn24Hour;
@@ -26,9 +26,16 @@ class WaveTime {
     timeDigitsIn24Hour = splitDigits(currentTimeIn24Hour);
   }
 
+  int get year => now.year; // Get year in YYYY.
+  int get month => now.month; // Get year in MM.
+  int get day => now.day; // Get year in DD.
+  String get monthInFull =>
+      DateFormat('MMMM').format(now); // Get month in full.
+  String get weekday => DateFormat('EEEE').format(now); // Get weekday in full.
+
   int get hourIn12Hour =>
       timeDigitsIn12Hour[0] * 10 +
-      timeDigitsIn12Hour[1]; // get hour in 12-hour format.
+      timeDigitsIn12Hour[1]; // Get hour in 12-hour format.
   int get hourTensIn12Hour =>
       timeDigitsIn12Hour[0]; // Get hour tens digit in 12-hour format.
   int get hourOnesIn12Hour =>
@@ -36,21 +43,21 @@ class WaveTime {
 
   int get hour =>
       timeDigitsIn24Hour[0] * 10 +
-      timeDigitsIn24Hour[1]; // get hour in 24-hour format.
+      timeDigitsIn24Hour[1]; // Get hour in 24-hour format.
   int get hourTens =>
       timeDigitsIn24Hour[0]; // Get hour tens digit in 24-hour format.
   int get hourOnes =>
       timeDigitsIn24Hour[1]; // Get hour ones digit in 24-hour format.
   int get minute =>
       timeDigitsIn24Hour[2] * 10 +
-      timeDigitsIn24Hour[3]; // get minute in 24-hour format.
+      timeDigitsIn24Hour[3]; // Get minute in 24-hour format.
   int get minuteTens =>
       timeDigitsIn24Hour[2]; // Get minute tens digit in 24-hour format.
   int get minuteOnes =>
       timeDigitsIn24Hour[3]; // Get minute ones digit in 24-hour format.
   int get second =>
       timeDigitsIn24Hour[4] * 10 +
-      timeDigitsIn24Hour[5]; // get minute in 24-hour format.
+      timeDigitsIn24Hour[5]; // Get minute in 24-hour format.
   int get secondTens =>
       timeDigitsIn24Hour[4]; // Get second tens digit in 24-hour format.
   int get secondOnes =>

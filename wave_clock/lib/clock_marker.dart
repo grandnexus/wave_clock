@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:wave_clock/utils.dart';
 
+/// [ClockMarker] is the hourly time marker (i.e. 1300 hrs and 1PM)
+/// to show the current wave level.
 class ClockMarker extends StatelessWidget {
   const ClockMarker({
     Key key,
@@ -11,12 +14,6 @@ class ClockMarker extends StatelessWidget {
 
   final bool is24HourFormat;
   final bool isDarkMode;
-
-  String formatTimeMarker(int marker, bool is24HourFormat) => is24HourFormat
-      ? '$marker'.padLeft(2, '0').padRight(4, '0')
-      : marker > 12
-          ? '${marker - 12}PM'.padLeft(2, '0')
-          : '${marker}AM'.padLeft(2, '0');
 
   @override
   Widget build(BuildContext context) {

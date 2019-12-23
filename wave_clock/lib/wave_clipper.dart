@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// [WaveClipper] to create wave animation using [CustomClipper].
 class WaveClipper extends CustomClipper<Path> {
   WaveClipper(
     this.animation,

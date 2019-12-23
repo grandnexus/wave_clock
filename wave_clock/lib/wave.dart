@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:wave_clock/wave_clipper.dart';
 
+/// [Wave] is the main wave widget which holds all the related widgets.
 class Wave extends StatefulWidget {
   const Wave({
     Key key,
