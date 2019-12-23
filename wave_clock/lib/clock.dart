@@ -43,7 +43,7 @@ class _ClockState extends State<Clock> {
   Timer _timer;
   WaveTime _now = WaveTime();
 
-  // Tick the clock.
+  // Update the clock.
   @override
   void initState() {
     _timer = Timer.periodic(Duration(seconds: 1), (v) {
@@ -54,23 +54,86 @@ class _ClockState extends State<Clock> {
     super.initState();
   }
 
+  // Dispose the periodic timer.
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = Size(widget.width, widget.height);
     return Stack(
       children: <Widget>[
+        // Clock marker in the background.
         ClockMarker(
           is24HourFormat: widget.is24HourFormat,
           isDarkMode: widget.isDarkMode,
         ),
+        // Animated wave in the background.
         Wave(
           size: size,
           xOffset: 0,
           yOffset: calculateWaveHeight(_now.hour, size),
-          color: widget.isDarkMode ? Colors.blue : Colors.pink,
+          color: getWeather(
+            _now.hour,
+            widget.weatherCondition,
+            isDarkMode: widget.isDarkMode,
+          ).waveColor,
           duration: 5,
           opacity: 1.0,
         ),
+        // Low and high temperatures with weather condition.
+        Positioned(
+          right: 20,
+          top: 10,
+          child: Row(
+            children: <Widget>[
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  Text(
+                    'Low: ${widget.lowTemperature}',
+                    style: Theme.of(context).textTheme.caption.copyWith(
+                          color: getWeather(
+                            _now.hour,
+                            widget.weatherCondition,
+                            isDarkMode: widget.isDarkMode,
+                          ).textColor,
+                        ),
+                  ),
+                  Text(
+                    'High: ${widget.highTemperature}',
+                    style: Theme.of(context).textTheme.caption.copyWith(
+                          color: getWeather(
+                            _now.hour,
+                            widget.weatherCondition,
+                            isDarkMode: widget.isDarkMode,
+                          ).textColor,
+                        ),
+                  ),
+                ],
+              ),
+              IconButton(
+                icon: BoxedIcon(
+                  getWeather(
+                    _now.hour,
+                    widget.weatherCondition,
+                    isDarkMode: widget.isDarkMode,
+                  ).icon,
+                  color: getWeather(
+                    _now.hour,
+                    widget.weatherCondition,
+                    isDarkMode: widget.isDarkMode,
+                  ).textColor,
+                ),
+                onPressed: null,
+              ),
+            ],
+          ),
+        ),
+        // Clock digit columns with today's date.
         Container(
           padding: const EdgeInsets.all(35.0),
           child: Column(
@@ -80,11 +143,11 @@ class _ClockState extends State<Clock> {
                 '${_now.weekday}, ${_now.day} ${_now.monthInFull} ${_now.year}',
                 style: Theme.of(context).textTheme.headline.copyWith(
                       fontWeight: FontWeight.bold,
-                      color: getTextColor(
+                      color: getWeather(
                         _now.hour,
-                        widget.isDarkMode,
-                        widget.color,
-                      ),
+                        widget.weatherCondition,
+                        isDarkMode: widget.isDarkMode,
+                      ).textColor,
                     ),
               ),
               SizedBox(height: 10.0),
@@ -149,71 +212,22 @@ class _ClockState extends State<Clock> {
             ],
           ),
         ),
-        Positioned(
-          right: 20,
-          top: 10,
-          child: Row(
-            children: <Widget>[
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  Text(
-                    'Low: ${widget.lowTemperature}',
-                    style: Theme.of(context).textTheme.caption.copyWith(
-                          color: getTextColor(
-                            _now.hour,
-                            widget.isDarkMode,
-                            widget.color,
-                          ),
-                        ),
-                  ),
-                  Text(
-                    'High: ${widget.highTemperature}',
-                    style: Theme.of(context).textTheme.caption.copyWith(
-                          color: getTextColor(
-                            _now.hour,
-                            widget.isDarkMode,
-                            widget.color,
-                          ),
-                        ),
-                  ),
-                ],
-              ),
-              IconButton(
-                icon: BoxedIcon(
-                  getWeatherIcon(_now.hour, widget.weatherCondition),
-                  color: getTextColor(
-                    _now.hour,
-                    widget.isDarkMode,
-                    widget.color,
-                  ),
-                ),
-                onPressed: null,
-              ),
-            ],
-          ),
-        ),
+        // Current location.
         Positioned(
           right: 20,
           bottom: 20,
           child: Text(
             '${widget.location}',
             style: Theme.of(context).textTheme.body1.copyWith(
-                  color: getTextColor(
+                  color: getWeather(
                     _now.hour,
-                    widget.isDarkMode,
-                    widget.color,
-                  ),
+                    widget.weatherCondition,
+                    isDarkMode: widget.isDarkMode,
+                  ).textColor,
                 ),
           ),
         ),
       ],
     );
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
   }
 }

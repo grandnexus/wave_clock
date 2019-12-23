@@ -89,7 +89,7 @@ class _WaveClockAppState extends State<WaveClockApp> {
       theme: ThemeData(
         fontFamily: 'Bungee',
         brightness: Theme.of(context).brightness,
-        primaryColorLight: Colors.grey,
+        primaryColorLight: Colors.black,
         primaryColorDark: Colors.white,
       ),
       home: Scaffold(
