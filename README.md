@@ -46,12 +46,12 @@ The user interface design of the Wave Clock consists of:
 - [ClockMarker](https://github.com/grandnexus/wave_clock/blob/master/wave_clock/lib/clock_marker.dart): The widget is the hourly time marker (i.e. 1300 hrs and 1PM) to show the current wave level.
 - [Wave](https://github.com/grandnexus/wave_clock/blob/master/wave_clock/lib/wave.dart): The widget is the animated wave to indicate the current hour of the day and weather condition using color.
 - [WaveClipper](https://github.com/grandnexus/wave_clock/blob/master/wave_clock/lib/wave.dart): The custom clipper to create wave animation.
-- [ClockCustomizer](https://github.com/grandnexus/flutter_clock_helper/blob/master/flutter_clock_helper/lib/customizer.dart): The widget is provided by [Flutter](https://flutter.dev) team to provide simulated data from the [Lenovo Smart Display](https://www.lenovo.com/us/en/smart-display).
+- [ClockCustomizer](https://github.com/grandnexus/wave_clock/blob/master/flutter_clock_helper/lib/customizer.dart): The widget is provided by [Flutter](https://flutter.dev) team to provide simulated data from the [Lenovo Smart Display](https://www.lenovo.com/us/en/smart-display).
 
 The model classes of the Wave Clock consists of:
 - [WaveTime](https://github.com/grandnexus/wave_clock/blob/master/wave_clock/lib/wave_time.dart): The model class to provide formatted current time in right digits and formats.
 - [Weather](https://github.com/grandnexus/wave_clock/blob/master/wave_clock/lib/weather.dart): The model class to hold the icon, text and wave colors for the clock.
-- [ClockModel](https://github.com/grandnexus/flutter_clock_helper/blob/master/flutter_clock_helper/lib/model.dart): The model class to hold the simulated data from [Lenovo Smart Display](https://www.lenovo.com/us/en/smart-display).
+- [ClockModel](https://github.com/grandnexus/wave_clock/blob/master/flutter_clock_helper/lib/model.dart): The model class to hold the simulated data from [Lenovo Smart Display](https://www.lenovo.com/us/en/smart-display).
 
 The utility classes of the Wave Clock consists of:
 - [Utils](https://github.com/grandnexus/wave_clock/blob/master/wave_clock/lib/utils.dart): The utility class to get the required data based on the respective user interface and datetime logic.
